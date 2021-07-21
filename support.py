@@ -3,7 +3,7 @@ import wikipedia
 
 
 def wf (data):
-	client = wolframalpha.Client("PRP8YR-Q5JL34VGRJ")
+	client = wolframalpha.Client("API KEY")
 	res = client.query(data)
 	ans = next(res.results).text
 	print(ans)
