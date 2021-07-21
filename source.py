@@ -1,8 +1,7 @@
 import speech_recognition as sr
 import pyttsx3
 import kit
-# import pywhatkit as kit
-import datetime
+import support
 import dt
 
 
@@ -49,6 +48,9 @@ def perform(data):
 	elif 'tutorial' in data:
 		kit.tutorial()
 
+	elif 'time' in data:
+		talk(dt.time())
+
 	elif 'day' in  data:
 		talk(str(dt.day()))
 
@@ -57,6 +59,16 @@ def perform(data):
 
 	elif 'month' in data:
 		talk(dt.month)
+
+	elif 'what is' in data:
+
+		try:
+			talk(support.wf(data))
+		except:
+			try:
+				talk(support.wk(data))
+			except:
+				kit.search(data)
 	
 
 
@@ -68,5 +80,8 @@ def runalexa():
 	if 'alexa' in command:
 		command=command.replace('alexa','')
 		perform(command)
+
+	else:
+		talk("thnak you")
 
 runalexa()
